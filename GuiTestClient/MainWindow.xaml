@@ -140,7 +140,7 @@
 
 
         <!-- Background message input part -->
-        <Border Grid.Column="1" CornerRadius="0 0 0 0" Background="#f8f7fc" Grid.ColumnSpan="1" Margin="-20,150,0,0" Grid.RowSpan="3">
+        <Border Grid.Column="1" CornerRadius="0 0 0 0" Background="#f8f7fc" Grid.ColumnSpan="1" Margin="-20,140,0,0" Grid.RowSpan="3">
             <!-- Message Input -->
             <Grid>
                 <Grid.RowDefinitions>
@@ -172,7 +172,7 @@
 
 
         <!-- Background chat part -->
-        <Border Grid.Column="2" CornerRadius="0 0 0 0" Background="#f8f7fc" Grid.ColumnSpan="1" Margin="0,150,0,0" Grid.RowSpan="3">
+        <Border Grid.Column="2" CornerRadius="0 0 0 0" Background="#f8f7fc" Grid.ColumnSpan="1" Margin="0,140,0,0" Grid.RowSpan="3">
             <!-- Server Chatverlauf -->
             <Border Grid.Column="2" CornerRadius="20 20 20 20" Background="#f8f7fc" Grid.ColumnSpan="1" Margin="20,20,20,20" 
                     Grid.RowSpan="3" BorderThickness="2" BorderBrush="Black">
