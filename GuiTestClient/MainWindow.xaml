@@ -1,0 +1,195 @@
+﻿<Window x:Class="GuiTestClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:uc="clr-namespace:GuiTestClient.UserControls"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GuiTestClient"
+        mc:Ignorable="d"
+        Height="800" Width="1250" ResizeMode="NoResize" Background="Transparent"
+        AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <!-- Basic structure -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <!-- Title menu horizontal -->
+        <Border CornerRadius="20 20 0 0" Background="#163E64" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,0" Grid.RowSpan="1" Panel.ZIndex="3" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Border CornerRadius="10 0 0 10" Background="#215F9A" Margin="20,10, 0,10">
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="TestClient" FontSize="36" Foreground="#ffffff" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold" Margin="10 5 10 5"/>
+                    </Border>
+                    <Border CornerRadius="0 10 10 0" Background="#ffffff" Margin="0,10, 0,10">
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="13" FontSize="36" Foreground="#215F9A" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold" Margin="5 5 10 5"/>
+                    </Border>
+                </StackPanel>
+                
+                    
+                <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Border CornerRadius="10 10 10 10" Background="#215F9A" Margin="10,0,0,0" Height="50" Width="50" MouseLeftButtonDown="Disconnect_Click" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                        <Icon:PackIconMaterial Kind="LanDisconnect" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20"/>
+                        <Border.ToolTip>
+                            <ToolTip Content="Von Server disconnecten"/>
+                        </Border.ToolTip>
+                    </Border>
+                    <Border CornerRadius="10 10 10 10" Background="#215F9A" Margin="10,0,0,0" Height="50" Width="50" MouseLeftButtonDown="Connect_Click" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                        <Icon:PackIconMaterial Kind="Connection" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20"/>
+                        <Border.ToolTip>
+                            <ToolTip Content="Reconnect"/>
+                        </Border.ToolTip>
+                    </Border>
+                    <Border CornerRadius="10 10 10 10" Background="#215F9A" Margin="10,0,0,0" Height="50" Width="50" MouseLeftButtonDown="Exit_Click" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                        <Icon:PackIconMaterial Kind="ExitToApp" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20"/>
+                        <Border.ToolTip>
+                            <ToolTip Content="Beenden"/>
+                        </Border.ToolTip>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Status menu horizontal -->
+        <Border CornerRadius="0 0 0 0" Background="#215F9A" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,-2,0,0" Grid.RowSpan="1" Panel.ZIndex="3">
+            <Grid Margin="50 0 50 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" CornerRadius="0 0 0 0" Background="Transparent" Margin="0,0,0,0">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Verbindungsstatus:" FontSize="20" TextWrapping="Wrap" FontWeight="SemiBold" Foreground="White"  Margin="0 10 50 0"/>
+                        <TextBlock x:Name="status" Text="getrennt" FontSize="20" TextWrapping="Wrap" FontWeight="Light" Foreground="Red"  Margin="0 0 0 10"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" CornerRadius="0 0 0 0" Background="Transparent" Margin="0,0,0,0" MouseLeftButtonDown="CopyToClipboard">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="LobbyID:" FontSize="20" TextWrapping="Wrap" FontWeight="SemiBold" Foreground="White"  Margin="0 10 0 0"/>
+                        <TextBlock x:Name="lobbyID" Text="00000000-0000-0000-0000-000000000000" TextWrapping="Wrap" FontSize="15" FontWeight="Light" Foreground="White"  Margin="0 0 0 10"/>
+                    </StackPanel>
+                    <Border.ToolTip>
+                        <ToolTip Content="Zum kopieren Klicken"/>
+                    </Border.ToolTip>
+                </Border>
+
+                <Border Grid.Column="2" CornerRadius="0 0 0 0" Background="Transparent" Margin="0,0,0,0" MouseLeftButtonDown="CopyToClipboard">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="PlayerID:" FontSize="20" TextWrapping="Wrap" FontWeight="SemiBold" Foreground="White"  Margin="0 10 0 0"/>
+                        <TextBlock x:Name="playerID" Text="00000000-0000-0000-0000-000000000000" TextWrapping="Wrap" FontSize="15" FontWeight="Light" Foreground="White"  Margin="0 0 0 10"/>
+                    </StackPanel>
+                    <Border.ToolTip>
+                        <ToolTip Content="Zum kopieren Klicken"/>
+                    </Border.ToolTip>
+                </Border>
+
+                <Border Grid.Column="3" CornerRadius="0 0 0 0" Background="Transparent" Margin="0,0,0,0" MouseLeftButtonDown="CopyToClipboard">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="ReconnectToken:" FontSize="20" TextWrapping="Wrap" FontWeight="SemiBold" Foreground="White"  Margin="0 10 0 0"/>
+                        <TextBlock x:Name="reconnectToken" Text="00000000-0000-0000-0000-000000000000" TextWrapping="Wrap" FontSize="15" FontWeight="Light" Foreground="White"  Margin="0 0 0 10"/>
+                    </StackPanel>
+                    <Border.ToolTip>
+                        <ToolTip Content="Zum kopieren Klicken"/>
+                    </Border.ToolTip>
+                </Border>
+
+                  </Grid>
+        </Border>
+
+        <!-- MessageType-menu left -->
+        <Border CornerRadius="20" Grid.RowSpan="3" Panel.ZIndex="2" Background="#6145e3">
+            <Grid>
+         
+                <!-- Message Menu -->
+                <StackPanel x:Name="MessageMenu" Margin="-10 180 0 0">
+                    <uc:MenuButton Title="Hello Server" Icon="Pencil" IsActive="True"/>
+                    <uc:MenuButton Title="Connect Game" Icon="Pencil"/>
+                    <uc:MenuButton Title="Reconnect" Icon="Pencil"/>
+                    <uc:MenuButton Title="Character Chosen" Icon="Pencil"/>
+                    <uc:MenuButton Title="Recruit Request" Icon="Pencil"/>
+                    <uc:MenuButton Title="Movement Request" Icon="Pencil"/>
+                    <uc:MenuButton Title="Fight Request" Icon="Pencil"/>
+                    <uc:MenuButton Title="End Request" Icon="Pencil"/>
+                    <uc:MenuButton Title="Text Message" Icon="Pencil"/>
+                    <uc:MenuButton Title="Pause Request" Icon="Pencil"/>
+                    <uc:MenuButton Title="Invalid Message" Icon="Pencil"/>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+
+        <!-- Background message input part -->
+        <Border Grid.Column="1" CornerRadius="0 0 0 0" Background="#f8f7fc" Grid.ColumnSpan="1" Margin="-20,150,0,0" Grid.RowSpan="3">
+            <!-- Message Input -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"
+                    Text="Bitte fülle die Nachricht aus:" FontSize="30" TextWrapping="Wrap"
+                    Foreground="Black" HorizontalAlignment="Center" Margin="0 30 0 30"/>
+
+                <!-- Message Input -->
+                <Border x:Name="MessageInput_Border" Grid.Row="1" CornerRadius="10 10 10 10" Background="#ffffff" Margin="30,10,10,10">
+                    
+                   
+                </Border>
+                
+                <!-- Senden Button -->
+                <Border Grid.Row="2" CornerRadius="10 10 10 10" Background="#6b52ea" Margin="10,10,20,10"
+                        HorizontalAlignment="Right" MouseLeftButtonDown="Send_Clicked" MouseEnter="Send_MouseEnter" MouseLeave="Send_MouseLeave">
+                    <TextBlock Grid.Row="0" 
+                            Text="Senden" FontSize="25" TextWrapping="Wrap" FontWeight="Bold"
+                            Foreground="White"  Margin="10 10 10 10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+
+            </Grid>
+        </Border>
+
+
+        <!-- Background chat part -->
+        <Border Grid.Column="2" CornerRadius="0 0 0 0" Background="#f8f7fc" Grid.ColumnSpan="1" Margin="0,150,0,0" Grid.RowSpan="3">
+            <!-- Server Chatverlauf -->
+            <Border Grid.Column="2" CornerRadius="20 20 20 20" Background="#f8f7fc" Grid.ColumnSpan="1" Margin="20,20,20,20" 
+                    Grid.RowSpan="3" BorderThickness="2" BorderBrush="Black">
+
+                <ScrollViewer x:Name="MessageScrollViewer" VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="MessageStackPanel" VerticalAlignment="Bottom">
+                        <!-- Hier werden die Buttons angezeigt -->
+                        <!--<Border Width="300" Margin="0 10 0 10" HorizontalAlignment="Left" CornerRadius="10" Background="#6b52ea" Padding="5">
+                            <TextBlock Text="CHARACTER_CHOSEN" FontSize="20" FontWeight="Bold" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+                        </Border>
+                        <Border Width="300" Margin="0 10 0 10" HorizontalAlignment="Right" CornerRadius="10" Background="LightGray" Padding="5">
+                            <TextBlock Text="Nachricht 1" FontSize="20" FontWeight="Bold" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+                        </Border>-->
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+        </Border>
+    </Grid>
+</Window>
