@@ -45,12 +45,26 @@ namespace GuiTestClient
             InitializeComponent();
             instance = this;
 
+            InitialDialog();
+
             Handle_MessageTypeClick(MessageType.HELLO_SERVER);
 
             TestClient.IncomingMessageEvent += HandleIncomingMessage;
             TestClient.ConnectionStatusChanged += HandleConnectionStatus;
 
             TestClient.EstablishConnection();
+        }
+
+
+        private void InitialDialog()
+        {
+            var dialog = new HostPortDialog();
+            if (dialog.ShowDialog() != true)
+            {
+                // Beende die Anwendung, wenn der Dialog abgebrochen wurde
+                Application.Current.Shutdown();
+            }
+            return;
         }
 
 

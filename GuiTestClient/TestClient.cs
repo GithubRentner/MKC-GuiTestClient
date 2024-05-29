@@ -11,7 +11,7 @@ namespace GuiTestClient
     class TestClient
     {
         public static ServerSocket socket;
-        private static int _port = 3018;
+        private static int _port = 1992;
         private static string _host = "localhost";
 
         public static List<string> allMessages = new List<string>();
@@ -101,6 +101,13 @@ namespace GuiTestClient
         private static void OnConnectionStatusChanged(bool isConnected)
         {
             ConnectionStatusChanged?.Invoke(null, isConnected);
+        }
+
+
+        public static void SetConnectionParameters(string host, int port)
+        {
+            _host = host;
+            _port = port;
         }
     }
 

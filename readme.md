@@ -17,7 +17,11 @@ Soll die Anwendung bearbeitet oder verändert werden, so muss der Ordner `GuiTes
 
 ## Verwendung
 
-Beim Starten des TestClients versucht dieser eine Verbindung zum Server herzustellen. Wurde der Server zuvor nicht gestartet, so vermerkt der TestClient das Scheitern des Verbindungsaufbaus, indem unter `Verbindungsstatus` in roter Schrift `getrennt` angegeben wird. In diesem Fall kann nach dem Starten des Server durch das Klicken des `Reconnect`-Buttons eine Verbindung aufgebaut werden. Wurde der Server vor dem Start des Clients gestartet, so wird dies unter `Verbindungsstatus` in grüner Schrift mit `verbunden` vermerkt.
+### Host und Port auswählen
+
+Nach dem Start der Anwendung wird ein kleines Fenster angezeigt, in dem Host und Port für die Verbindung zum Server konfiguriert werden können. Standardmäßig werden `Localhost` als Host und der Port `1992` verwendet. Nach dem Bestätigen per Klich auf `OK` versucht der TestClient eine Verbindung zum Server herzustellen. Dies kann einige Zeit in Anspruch nehmen und da kein Lade-Screen implementiert wurde, könnte der Eindruck entstehen das Programm sei abgestürzt. Anschließend öffnet sich der Haupt-Screen.
+
+Wurde der Server zuvor nicht gestartet, so vermerkt der TestClient das Scheitern des Verbindungsaufbaus, indem unter `Verbindungsstatus` in roter Schrift `getrennt` angegeben wird. In diesem Fall kann nach dem Starten des Server durch das Klicken des `Reconnect`-Buttons eine Verbindung aufgebaut werden. Wurde der Server vor dem Start des Clients gestartet, so wird dies unter `Verbindungsstatus` in grüner Schrift mit `verbunden` vermerkt.
 
 ### Überblick
 
@@ -78,3 +82,10 @@ Durch Doppelklick auf diese obere dunkelblaue Leiste kann das Fenster maximiert 
 ### Bemerkungen
 
 Diese TestClient-Anwendung ist nicht als vollständig ausgereifte Anwendung konzipiert, sondern ist nur zum Testen von Server-Anwendungen gedacht.
+
+
+## Releases
+
+*v1.0:* Der TestClient ist darauf konfiguriert immer zu `Localhost` unter Port 3018 eine Verbindung aufzubauen. Dies beruhte auf einer alten Version des Standard-Dokuments.
+
+*v1.1:* Nach dem Start der Anwendung wird nun ein Fenster gezeigt, in dem der Host und der Port zu dem sich der Client verbinden soll, ausgewählt werden können. Als Default-Werte werden dabei gemäß dem aktuellen Standard `Localhost` und der Port `1992` verwendet. 

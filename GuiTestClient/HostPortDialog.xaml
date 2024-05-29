@@ -1,0 +1,30 @@
+﻿<Window x:Class="GuiTestClient.HostPortDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Host and Port" Height="175" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <!-- Basic structure -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+      
+        <TextBlock Text="Host:" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10"/>
+        <TextBox x:Name="HostTextBox" Text="Localhost" Grid.Row="1" Grid.Column="2" Margin="10,0,0,20" Width="200"/>
+
+        <TextBlock Text="Port:" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10"/>
+        <TextBox x:Name="PortTextBox" Text="1992" Grid.Row="2" Grid.Column="2" Margin="10,0,0,20" Width="200"/>
+
+        <Button Content="OK" Width="100" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Click="OKButton_Click"/>
+        
+    </Grid>
+</Window>
